@@ -1,0 +1,12 @@
+pod:
+  image: openshift/origin-pod
+  container_name: pod
+  user: "100000"
+  ports:
+    - "8080:8080"
+
+nginx:
+  #image: axags/nginx-openshift
+  build: .
+  user: "100000"
+  net: "container:pod"

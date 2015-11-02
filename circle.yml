@@ -1,0 +1,9 @@
+machine:
+  services:
+    - docker
+dependencies:
+  override:
+    - docker build -t axags/nginx-openshift .
+test:
+  override:
+    - docker run -it axags/nginx-openshift nginx -V
