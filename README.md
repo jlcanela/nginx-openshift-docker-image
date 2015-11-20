@@ -16,6 +16,7 @@ This image use the [openshift/origin-base](https://hub.docker.com/r/openshift/or
 
 * Serve some static files via HTTP
 * Proxy a backend service
+  * With custom redirection rules
   * With extra Headers
 
 ## How To Use
@@ -23,7 +24,7 @@ This image use the [openshift/origin-base](https://hub.docker.com/r/openshift/or
 * If you just want to serve some static files, mount them at `/usr/share/nginx/html`
 * If you want to proxify a backend service, you can either configure the backend target through the `NGINX_PROXY_TARGET` environment variable (`http://host:port` syntax) or use a custom configuration.
 
-Note that you can have a look at the `docker-compose.yml` for an example with both a proxy instance and a simple (backend) instance, and some custom headers.
+Note that you can have a look at the `docker-compose.yml` for an example with both a proxy instance and a simple (backend) instance, and some custom headers and redirection rules.
 
 ### Basic configuration through environment variables
 
@@ -38,6 +39,11 @@ Use environment variables to configure the default configuration:
     * `NGINX_PROXY_HEADER_2="X-Custom-Header-2 \"My value\""` to add a header `X-Custom-Header-2` with the value `My value`
     * ...
 * `NGINX_HEADER_*` to add headers, for example:
+  * `NGINX_HEADER_1="X-Custom-Header-1 value"` to add a header `X-Custom-Header-1` with the value `value`
+  * `NGINX_HEADER_2="X-Custom-Header-2 \"My value\""` to add a header `X-Custom-Header-2` with the value `My value`
+  * ...
+* `NGINX_REWRITE_*` to add rewrite rules, for example:
+  * `NGINX_REWRITE_`
   * `NGINX_HEADER_1="X-Custom-Header-1 value"` to add a header `X-Custom-Header-1` with the value `value`
   * `NGINX_HEADER_2="X-Custom-Header-2 \"My value\""` to add a header `X-Custom-Header-2` with the value `My value`
   * ...

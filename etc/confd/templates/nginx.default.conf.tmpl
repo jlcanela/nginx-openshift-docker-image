@@ -24,9 +24,15 @@ location / {
   {{end}}
 {{end}}
 
-
 {{range getvs "/nginx/header/*"}}
   add_header      {{.}};
+{{end}}
+
+{{range getvs "/nginx/rewrite/permanent/*"}}
+  rewrite         {{.}}     permanent;
+{{end}}
+{{range getvs "/nginx/rewrite/temporary/*"}}
+  rewrite         {{.}}     redirect;
 {{end}}
 
 }

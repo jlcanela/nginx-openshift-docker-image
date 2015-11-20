@@ -6,5 +6,7 @@ keys = [
     "/nginx/proxy/target",
     "/nginx/proxy/timeout/read",
     "/nginx/proxy/header",
-    "/nginx/header"
+    "/nginx/header",
+    "/nginx/rewrite/permanent",
+    "/nginx/rewrite/temporary"
 ]
