@@ -12,6 +12,7 @@ proxy:
   environment:
     NGINX_PROXY_TARGET: http://localhost:9000
     NGINX_PROXY_HEADER_1: "X-Custom-Header \"My value\""
+    NGINX_HEADER_1: "X-Proxy Nginx"
   net: "container:pod"
 
 backend:

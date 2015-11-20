@@ -36,6 +36,11 @@ Use environment variables to configure the default configuration:
   * `NGINX_PROXY_HEADER_*` to add headers to the proxyfied request, for examples:
     * `NGINX_PROXY_HEADER_1="X-Custom-Header-1 value"` to add a header `X-Custom-Header-1` with the value `value`
     * `NGINX_PROXY_HEADER_2="X-Custom-Header-2 \"My value\""` to add a header `X-Custom-Header-2` with the value `My value`
+    * ...
+* `NGINX_HEADER_*` to add headers, for example:
+  * `NGINX_HEADER_1="X-Custom-Header-1 value"` to add a header `X-Custom-Header-1` with the value `value`
+  * `NGINX_HEADER_2="X-Custom-Header-2 \"My value\""` to add a header `X-Custom-Header-2` with the value `My value`
+  * ...
 
 ### Custom configuration
 
