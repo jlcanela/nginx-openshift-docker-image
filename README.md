@@ -12,9 +12,25 @@
 
 This image use the [openshift/origin-base](https://hub.docker.com/r/openshift/origin-base/) base-image.
 
-## Using a custom configuration
+## Use Cases
 
-To use a custom Nginx configuration, you can write a new image based on this one :
+* Serve some static files via HTTP
+
+## How To Use
+
+* If you just want to serve some static files, mount them at `/usr/share/nginx/html`
+
+### Basic configuration through environment variables
+
+Use environment variables to configure the default configuration:
+
+* `NGINX_LISTEN_PORT` for the port used by Nginx (default to `8080`)
+
+### Custom configuration
+
+For more complex configuration needs, you can mount Nginx configuration files at `/var/nginx/conf.d` and/or `/var/nginx/default.d`, and they will be copied to `/etc/nginx/conf.d` and `/etc/nginx/default.d` after the default configuration generation.
+
+You can also build a new image based on this one :
 
 * create a `Dockerfile` :
 
@@ -26,6 +42,7 @@ To use a custom Nginx configuration, you can write a new image based on this one
 
   ```
   server {
+    listen 8080;
     server_name myhost.mydomain.tld;
     location /assets/ {
       alias /opt/myapp/assets/;
