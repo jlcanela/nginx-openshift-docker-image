@@ -5,8 +5,19 @@ pod:
   ports:
     - "8080:8080"
 
-nginx:
+proxy:
   #image: axags/nginx-openshift
   build: .
   user: "100000"
+  environment:
+    NGINX_PROXY_TARGET: http://localhost:9000
+    NGINX_PROXY_HEADER_1: "X-Custom-Header \"My value\""
+  net: "container:pod"
+
+backend:
+  #image: axags/nginx-openshift
+  build: .
+  user: "100000"
+  environment:
+    NGINX_LISTEN_PORT: 9000
   net: "container:pod"

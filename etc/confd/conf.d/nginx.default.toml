@@ -2,5 +2,8 @@
 src = "nginx.default.conf.tmpl"
 dest = "/etc/nginx/default.d/default.conf"
 keys = [
-    "/nginx/listen/port"
+    "/nginx/listen/port",
+    "/nginx/proxy/target",
+    "/nginx/proxy/timeout/read",
+    "/nginx/proxy/header"
 ]
