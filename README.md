@@ -43,9 +43,8 @@ Use environment variables to configure the default configuration:
   * `NGINX_HEADER_2="X-Custom-Header-2 \"My value\""` to add a header `X-Custom-Header-2` with the value `My value`
   * ...
 * `NGINX_REWRITE_*` to add rewrite rules, for example:
-  * `NGINX_REWRITE_`
-  * `NGINX_HEADER_1="X-Custom-Header-1 value"` to add a header `X-Custom-Header-1` with the value `value`
-  * `NGINX_HEADER_2="X-Custom-Header-2 \"My value\""` to add a header `X-Custom-Header-2` with the value `My value`
+  * `NGINX_REWRITE_PERMANENT_1="/old /"` to add a permanent redirect (code 301) from `/old` to `/`
+  * `NGINX_REWRITE_TEMPORARY_1="/tmp /"` to add a temporary redirect (code 302) from `/tmp` to `/`
   * ...
 
 ### Custom configuration
