@@ -32,8 +32,8 @@ Use environment variables to configure the default configuration:
 
 * `NGINX_LISTEN_PORT` for the port used by Nginx (default to `8080`)
 * `NGINX_LOG_*` for the access/error logs:
-  * `NGINX_LOG_ACCESS` for the access logs. Default to `/var/log/nginx/access.log`, but can be set to `/dev/stdout`. In case of problem, read https://github.com/docker/docker/issues/6880
-  * `NGINX_LOG_ERROR` for the error logs. Default to `/var/log/nginx/error.log`, but can be set to `/dev/stderr`. In case of problem, read https://github.com/docker/docker/issues/6880
+  * `NGINX_LOG_ACCESS` for the access logs. Default to `/var/log/nginx/access.log`, but can be set to `/dev/stdout` (if using Docker >= 1.9). In case of problem, read https://github.com/docker/docker/issues/6880
+  * `NGINX_LOG_ERROR` for the error logs. Default to `/var/log/nginx/error.log`, but can be set to `/dev/stderr` (if using Docker >= 1.9). In case of problem, read https://github.com/docker/docker/issues/6880
 * `NGINX_PROXY_*` for the proxy configuration, for example:
   * `NGINX_PROXY_TARGET` for the proxy target (`http://host:port` syntax)
   * `NGINX_PROXY_TIMEOUT_READ` for the proxy read timeout (`60s` by default)
@@ -45,10 +45,13 @@ Use environment variables to configure the default configuration:
   * `NGINX_HEADER_1="X-Custom-Header-1 value"` to add a header `X-Custom-Header-1` with the value `value`
   * `NGINX_HEADER_2="X-Custom-Header-2 \"My value\""` to add a header `X-Custom-Header-2` with the value `My value`
   * ...
-* `NGINX_REWRITE_*` to add rewrite rules, for example:
-  * `NGINX_REWRITE_PERMANENT_1="/old /"` to add a permanent redirect (code 301) from `/old` to `/`
-  * `NGINX_REWRITE_TEMPORARY_1="/tmp /"` to add a temporary redirect (code 302) from `/tmp` to `/`
-  * ...
+* `NGINX_REWRITE_*` to add rewrite rules:
+  * `NGINX_REWRITE_PERMANENT_*` for permanent redirects (code 301), for example:
+    * `NGINX_REWRITE_PERMANENT_1="/old /"` to add a permanent redirect (code 301) from `/old` to `/`
+    * ...
+  * `NGINX_REWRITE_TEMPORARY_*` for temporary redirects (code 302), for example:
+    * `NGINX_REWRITE_TEMPORARY_1="/tmp /"` to add a temporary redirect (code 302) from `/tmp` to `/`
+    * ...
 
 ### Custom configuration
 
@@ -85,4 +88,4 @@ You can also build a new image based on this one :
 
 ## Known issues
 
-* Logs are not written to the `/var/log/nginx` volume by default, because of https://github.com/docker/docker/issues/6880
+* Logs are not written to the standard output by default, because of https://github.com/docker/docker/issues/6880 - TL;DR we can't use `/dev/stdout` and `/dev/stderr` without being `root` until Docker 1.9.
