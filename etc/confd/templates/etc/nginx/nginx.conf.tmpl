@@ -3,7 +3,7 @@
 
 daemon off;
 worker_processes auto;
-error_log /var/log/nginx/error.log;
+error_log {{getv "/nginx/log/error"}};
 pid /dev/null;
 
 events {
@@ -15,7 +15,7 @@ http {
                       '$status $body_bytes_sent "$http_referer" '
                       '"$http_user_agent" "$http_x_forwarded_for"';
 
-    access_log  /var/log/nginx/access.log  main;
+    access_log  {{getv "/nginx/log/access"}}  main;
 
     sendfile            on;
     tcp_nopush          on;

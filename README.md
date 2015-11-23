@@ -31,6 +31,9 @@ Note that you can have a look at the `docker-compose.yml` for an example with bo
 Use environment variables to configure the default configuration:
 
 * `NGINX_LISTEN_PORT` for the port used by Nginx (default to `8080`)
+* `NGINX_LOG_*` for the access/error logs:
+  * `NGINX_LOG_ACCESS` for the access logs. Default to `/var/log/nginx/access.log`, but can be set to `/dev/stdout`. In case of problem, read https://github.com/docker/docker/issues/6880
+  * `NGINX_LOG_ERROR` for the error logs. Default to `/var/log/nginx/error.log`, but can be set to `/dev/stderr`. In case of problem, read https://github.com/docker/docker/issues/6880
 * `NGINX_PROXY_*` for the proxy configuration, for example:
   * `NGINX_PROXY_TARGET` for the proxy target (`http://host:port` syntax)
   * `NGINX_PROXY_TIMEOUT_READ` for the proxy read timeout (`60s` by default)
@@ -82,4 +85,4 @@ You can also build a new image based on this one :
 
 ## Known issues
 
-* Logs are not written to `stdout`/`stderr`, but to the `/var/log/nginx` volume, because of https://github.com/docker/docker/issues/6880
+* Logs are not written to the `/var/log/nginx` volume by default, because of https://github.com/docker/docker/issues/6880

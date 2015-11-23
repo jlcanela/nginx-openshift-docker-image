@@ -23,4 +23,6 @@ backend:
   user: "100000"
   environment:
     NGINX_LISTEN_PORT: 9000
+    NGINX_LOG_ACCESS: /dev/stdout
+    NGINX_LOG_ERROR: /dev/stderr
   net: "container:pod"

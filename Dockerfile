@@ -13,8 +13,8 @@ RUN echo "Installing Nginx ..." \
  && mkdir -p /var/lib/nginx && chmod -R 777 /var/lib/nginx \
  && mkdir -p /var/log/nginx && chmod -R 777 /var/log/nginx
 
-COPY etc/nginx/ /etc/nginx/
 RUN chmod 777 /etc/nginx \
+ && chmod 666 /etc/nginx/nginx.conf \
  && mkdir -p /etc/nginx/default.d && chmod -R 777 /etc/nginx/default.d \
  && mkdir -p /etc/nginx/conf.d && chmod -R 777 /etc/nginx/conf.d
 
@@ -27,5 +27,7 @@ COPY etc/confd/ /etc/confd/
 VOLUME ["/etc/nginx/default.d", "/etc/nginx/conf.d", "/var/log/nginx"]
 
 # Default values
-ENV NGINX_LISTEN_PORT=8080
+ENV NGINX_LISTEN_PORT=8080 \
+    NGINX_LOG_ACCESS=/var/log/nginx/access.log \
+    NGINX_LOG_ERROR=/var/log/nginx/error.log
 EXPOSE 8080
