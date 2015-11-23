@@ -1,6 +1,6 @@
 FROM openshift/origin-base
 
-MAINTAINER https://github.com/AXA-GROUP-SOLUTIONS/nginx-openshift-docker-image
+MAINTAINER https://github.com/vbehar/nginx-openshift-docker-image
 
 ENV CONFD_VERSION 0.10.0
 RUN echo "Installing Confd ${CONFD_VERSION} ..." \

@@ -1,10 +1,10 @@
 # Nginx OpenShift Docker Image
 
-[![Circle CI](https://circleci.com/gh/AXA-GROUP-SOLUTIONS/nginx-openshift-docker-image/tree/master.svg?style=shield)](https://circleci.com/gh/AXA-GROUP-SOLUTIONS/nginx-openshift-docker-image/tree/master)
-[![DockerHub](https://img.shields.io/badge/docker-axags%2Fnginx--openshift-008bb8.svg)](https://hub.docker.com/r/axags/nginx-openshift/)
-[![Image Layers](https://badge.imagelayers.io/axags/nginx-openshift:latest.svg)](https://imagelayers.io/?images=axags/nginx-openshift:latest)
+[![Circle CI](https://circleci.com/gh/vbehar/nginx-openshift-docker-image/tree/master.svg?style=shield)](https://circleci.com/gh/vbehar/nginx-openshift-docker-image/tree/master)
+[![DockerHub](https://img.shields.io/badge/docker-vbehar%2Fnginx--openshift-008bb8.svg)](https://hub.docker.com/r/vbehar/nginx-openshift/)
+[![Image Layers](https://badge.imagelayers.io/vbehar/nginx-openshift:latest.svg)](https://imagelayers.io/?images=vbehar/nginx-openshift:latest)
 
-`axags/nginx-openshift` is a base Docker image that should be used to run nginx-based applications in an OpenShift environment.
+`vbehar/nginx-openshift` is a base Docker image that should be used to run nginx-based applications in an OpenShift environment.
 
 ### OpenShift specific requirements
 
@@ -62,7 +62,7 @@ You can also build a new image based on this one :
 * create a `Dockerfile` :
 
   ```
-  FROM axags/nginx-openshift
+  FROM vbehar/nginx-openshift
   COPY myhost.conf /etc/nginx/conf.d/
   ```
 * create a `myhost.conf` file. For example, you serve static assets with nginx, and proxy the dynamic requests to a backend application running on another container in the same pod :

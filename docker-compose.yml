@@ -6,7 +6,7 @@ pod:
     - "8080:8080"
 
 proxy:
-  #image: axags/nginx-openshift
+  #image: vbehar/nginx-openshift
   build: .
   user: "100000"
   environment:
@@ -18,7 +18,7 @@ proxy:
   net: "container:pod"
 
 backend:
-  #image: axags/nginx-openshift
+  #image: vbehar/nginx-openshift
   build: .
   user: "100000"
   environment:

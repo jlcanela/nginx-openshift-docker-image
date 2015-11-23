@@ -3,7 +3,7 @@ machine:
     - docker
 dependencies:
   override:
-    - docker build -t axags/nginx-openshift .
+    - docker build -t vbehar/nginx-openshift .
 test:
   override:
-    - docker run -it axags/nginx-openshift nginx -V
+    - docker run -it vbehar/nginx-openshift nginx -V
